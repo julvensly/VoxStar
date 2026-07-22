@@ -22,7 +22,9 @@ return (
 />
     <p>pri: 100 HTG</p>
    <button>Achete</button>
-     </div>
+<h3>pou plis infòmasyon rele nan nimero</h3> 
+<button>33860948</button>
+ </div>
    </div>
  )
 }
