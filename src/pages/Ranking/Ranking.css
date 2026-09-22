@@ -1,0 +1,125 @@
+.ranking {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 70px 15px 40px;
+
+  background: #f8f9fa;
+}
+
+.ranking-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.ranking-header p {
+  margin: 0 0 5px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.ranking-header h1 {
+  margin: 0 0 5px;
+  font-size: 30px;
+}
+
+.ranking-header span {
+  font-size: 14px;
+  color: #666666;
+}
+
+.ranking-list {
+  width: 100%;
+  max-width: 700px;
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ranking-card {
+  width: 100%;
+  min-height: 78px;
+
+  padding: 12px 14px;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  border: none;
+  border-radius: 14px;
+
+  background: #ffffff;
+
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+
+  text-align: left;
+  cursor: pointer;
+}
+
+.ranking-card:hover {
+  transform: translateY(-1px);
+}
+
+.ranking-position {
+  width: 45px;
+  min-width: 45px;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  text-align: center;
+}
+
+.ranking-info {
+  flex: 1;
+}
+
+.ranking-info h2 {
+  margin: 0 0 5px;
+  font-size: 17px;
+}
+
+.ranking-info p {
+  margin: 0;
+  font-size: 13px;
+  color: #666666;
+}
+
+.ranking-votes {
+  min-width: 55px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ranking-votes strong {
+  font-size: 18px;
+}
+
+.ranking-votes span {
+  font-size: 11px;
+  color: #777777;
+}
+
+@media (max-width: 600px) {
+  .ranking {
+    padding: 60px 10px 30px;
+  }
+
+  .ranking-card {
+    min-height: 72px;
+    padding: 10px;
+  }
+
+  .ranking-position {
+    width: 40px;
+    min-width: 40px;
+  }
+}

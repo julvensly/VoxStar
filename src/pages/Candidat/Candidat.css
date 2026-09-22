@@ -1,0 +1,140 @@
+.candidat {
+  width: 100%;
+  min-height: 100%;
+  padding: 25px 16px 40px;
+  box-sizing: border-box;
+  background: #f5f8fc;
+}
+
+.candidat-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.candidat-header p {
+  margin: 0 0 6px;
+  color: #0066cc;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.candidat-header h1 {
+  margin: 0;
+  color: #111827;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.candidat-header span {
+  display: block;
+  margin-top: 8px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.candidat-list {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.candidat-item {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.candidat-button {
+  width: 100%;
+  min-height: 58px;
+  padding: 16px;
+  border: none;
+  background: transparent;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  text-align: left;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.candidat-button:active {
+  background: #f3f6fa;
+}
+
+.candidat-arrow {
+  min-width: 25px;
+  font-size: 20px;
+  color: #0066cc;
+  text-align: center;
+  line-height: 1;
+}
+
+.candidat-content {
+  padding: 0 16px 17px;
+  border-top: 1px solid #eef1f5;
+  animation: candidatOpen 0.2s ease;
+}
+
+.candidat-content p {
+  margin: 15px 0 0;
+  color: #4b5563;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.candidat-content strong {
+  color: #111827;
+}
+
+.candidat-item.open {
+  border-color: #d6e5f5;
+}
+
+@keyframes candidatOpen {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .candidat {
+    padding: 20px 12px 30px;
+  }
+
+  .candidat-header h1 {
+    font-size: 24px;
+  }
+
+  .candidat-button {
+    min-height: 54px;
+    padding: 14px;
+    font-size: 14px;
+  }
+
+  .candidat-content {
+    padding: 0 14px 15px;
+  }
+
+  .candidat-content p {
+    font-size: 13.5px;
+    line-height: 1.65;
+  }
+}

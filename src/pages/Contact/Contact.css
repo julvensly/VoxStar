@@ -1,0 +1,118 @@
+.contact {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 70px 15px 40px;
+
+  background: #f8f9fa;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.contact-header p {
+  margin: 0 0 5px;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  letter-spacing: 2px;
+}
+
+.contact-header h1 {
+  margin: 0 0 6px;
+
+  font-size: 30px;
+}
+
+.contact-header span {
+  font-size: 14px;
+  color: #666666;
+}
+
+.contact-content {
+  width: 100%;
+  max-width: 650px;
+
+  margin: 0 auto;
+}
+
+.contact-card {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 15px;
+
+  padding: 20px;
+
+  background: #ffffff;
+
+  border-radius: 14px;
+
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+}
+
+.contact-icon {
+  width: 48px;
+  height: 48px;
+
+  min-width: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #eaf3ff;
+
+  font-size: 22px;
+}
+
+.contact-card h2 {
+  margin: 0 0 6px;
+
+  font-size: 19px;
+}
+
+.contact-card p {
+  margin: 0 0 12px;
+
+  font-size: 13px;
+  line-height: 1.6;
+
+  color: #666666;
+}
+
+.contact-card a {
+  display: block;
+
+  margin-top: 8px;
+
+  color: #0066cc;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  text-decoration: none;
+}
+
+.contact-card a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .contact {
+    padding: 60px 10px 30px;
+  }
+
+  .contact-header h1 {
+    font-size: 26px;
+  }
+
+  .contact-card {
+    padding: 16px;
+  }
+}
