@@ -16,13 +16,14 @@ function Menu({ isOpen, onClose }) {
         onClick={onClose}
       />
 
-      <aside
-        className={`menu-panel ${isOpen ? 'open' : ''}`}
-      >
-
+      <aside className={`menu-panel ${isOpen ? 'open' : ''}`}>
         <div className="menu-header">
 
-          <h2>VOXSTAR</h2>
+          <img
+            src="Start.png"
+            alt="VoxStar"
+            className="menu-logo"
+          />
 
           <button
             className="menu-close"
@@ -37,35 +38,34 @@ function Menu({ isOpen, onClose }) {
         <nav className="menu-content">
 
           <button
-            onClick={() => openPage('/classement')}
+            className="menu-profile"
+            onClick={() => openPage('/mon-compte')}
           >
+            <span className="menu-profile-icon">👤</span>
+            <span>Mon compte</span>
+          </button>
+
+          <button onClick={() => openPage('/classement')}>
             🏆
             <span>Classement</span>
           </button>
 
-          <button
-            onClick={() => openPage('/reglement')}
-          >
+          <button onClick={() => openPage('/reglement')}>
             📜
             <span>Règlement du concours</span>
           </button>
 
-          <button
-            onClick={() => openPage('/contact')}
-          >
+          <button onClick={() => openPage('/contact')}>
             📞
             <span>Contact</span>
           </button>
 
-          <button
-            onClick={() => openPage('/devenir-candidat')}
-          >
+          <button onClick={() => openPage('/devenir-candidat')}>
             ⭐
             <span>Comment devenir candidat ?</span>
           </button>
 
         </nav>
-
       </aside>
     </>
   )

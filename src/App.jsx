@@ -9,6 +9,10 @@ import Reglement from './pages/Reglement/Reglement'
 import Contact from './pages/Contact/Contact'
 import Candidat from './pages/Candidat/Candidat'
 
+import MonCompte from './pages/MonCompte/MonCompte'
+import Inscription from './pages/Inscription/Inscription'
+import Connexion from './pages/Connexion/Connexion'
+
 function App() {
   return (
     <BrowserRouter>
@@ -19,10 +23,7 @@ function App() {
 
         <Routes>
 
-          <Route
-            path="/"
-            element={<Home />}
-          />
+          <Route path="/" element={<Home />} />
 
           <Route
             path="/classement"
@@ -42,6 +43,21 @@ function App() {
           <Route
             path="/devenir-candidat"
             element={<Candidat />}
+          />
+
+          <Route
+            path="/mon-compte"
+            element={<MonCompte />}
+          />
+
+          <Route
+            path="/inscription"
+            element={<Inscription />}
+          />
+
+          <Route
+            path="/connexion"
+            element={<Connexion />}
           />
 
         </Routes>

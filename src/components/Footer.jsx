@@ -36,10 +36,15 @@ function Footer() {
         </div>
 
         <div className="footer-bottom">
-         <p className="footer-age-warning">
-Déconseillé aux moins de 18 ans.
-</p>
- <p>© 2026 VoxStar. Tous droits réservés.</p>
+          <p className="footer-age-warning">
+            Déconseillé aux moins de 18 ans.
+          </p>
+
+          <p>© 2026 VoxStar. Tous droits réservés.</p>
+
+          <p className="footer-version">
+            Version 1.0.1
+          </p>
         </div>
 
       </div>
