@@ -1,0 +1,119 @@
+.profile-page {
+  width: 100%;
+  min-height: calc(100vh - 70px);
+  margin: 0;
+  padding: 20px 16px 40px;
+  box-sizing: border-box;
+  background: #ffffff;
+  display: block;
+}
+
+.profile-header {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.profile-top {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+/* PHOTO EN HAUT À GAUCHE */
+.profile-avatar-wrapper {
+  width: 105px;
+  height: 105px;
+  flex-shrink: 0;
+}
+
+.profile-avatar-placeholder {
+  width: 105px;
+  height: 105px;
+  border-radius: 50%;
+  background: #f1f3f5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 48px;
+}
+
+/* PARAMÈTRES EN HAUT À DROITE */
+.profile-settings-button {
+  width: 44px;
+  height: 44px;
+
+  margin: 0;
+  padding: 0;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #f3f4f6;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 21px;
+  cursor: pointer;
+}
+
+.profile-settings-button:active {
+  transform: scale(0.94);
+}
+
+/* NOM SOUS LA PHOTO */
+.profile-name {
+  margin-top: 12px;
+  font-size: 24px;
+  line-height: 1.15;
+  font-weight: 700;
+
+  color: #111827;
+
+  text-align: left;
+}
+
+/* STATISTIQUES */
+.profile-content {
+  width: 100%;
+  margin-top: 30px;
+  padding-top: 22px;
+
+  border-top: 1px solid #e5e7eb;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+
+  text-align: center;
+}
+
+.profile-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.profile-stat strong {
+  font-size: 21px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.profile-stat span {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.profile-loading {
+  width: 100%;
+  text-align: center;
+  margin-top: 40px;
+  color: #6b7280;
+}

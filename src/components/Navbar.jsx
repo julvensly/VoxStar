@@ -1,48 +1,119 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import './Navbar.css'
+import { useEffect, useState } from 'react'
+import {
+  useLocation,
+  useNavigate
+} from 'react-router-dom'
 
+import './Navbar.css'
 import Menu from './Menu/Menu'
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+
   const navigate = useNavigate()
+  const location = useLocation()
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 5)
+    }
+
+    window.addEventListener(
+      'scroll',
+      handleScroll
+    )
+
+    handleScroll()
+
+    return () => {
+      window.removeEventListener(
+        'scroll',
+        handleScroll
+      )
+    }
+  }, [])
+
+  const handleBack = () => {
+    const currentPath =
+      location.pathname
+
+    if (currentPath === '/') {
+      return
+    }
+
+    if (currentPath === '/profile') {
+      navigate('/', {
+        replace: true
+      })
+
+      return
+    }
+
+    if (window.history.length <= 1) {
+      navigate('/', {
+        replace: true
+      })
+
+      return
+    }
+
+    navigate(-1)
+  }
 
   return (
     <>
-      <nav className="navbar">
-        <div className="navbar-container">
+      <div className="navbar-slot">
 
-          <button
-            className="navbar-back"
-            onClick={() => navigate(-1)}
-            aria-label="Retour"
-          >
-            ←
-          </button>
+        <nav
+          className={`navbar ${
+            isScrolled
+              ? 'navbar-scrolled'
+              : ''
+          }`}
+        >
 
-          <div className="navbar-logo">
-            VOXSTAR
-          </div>
-
-          <div className="navbar-actions">
+          <div className="navbar-container">
 
             <button
-              className="navbar-menu"
-              onClick={() => setIsMenuOpen(true)}
-              aria-label="Ouvrir le menu"
+              type="button"
+              className="navbar-back"
+              onClick={handleBack}
+              aria-label="Retour"
             >
-              ☰
+              ←
             </button>
+
+            <div className="navbar-logo">
+              VOXSTAR
+            </div>
+
+            <div className="navbar-actions">
+
+              <button
+                type="button"
+                className="navbar-menu"
+                onClick={() =>
+                  setIsMenuOpen(true)
+                }
+                aria-label="Ouvrir le menu"
+              >
+                ☰
+              </button>
+
+            </div>
 
           </div>
 
-        </div>
-      </nav>
+        </nav>
+
+      </div>
 
       <Menu
         isOpen={isMenuOpen}
-        onClose={() => setIsMenuOpen(false)}
+        onClose={() =>
+          setIsMenuOpen(false)
+        }
       />
     </>
   )

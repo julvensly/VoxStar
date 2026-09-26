@@ -1,81 +1,108 @@
+.navbar-slot {
+  width: 100%;
+  height: 52px;
+}
+
 .navbar {
+  position: relative;
+  width: 100%;
+  height: 52px;
+
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+
+  z-index: 1000;
+
+  transition: box-shadow 0.2s ease;
+}
+
+.navbar.navbar-scrolled {
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
 
-  width: 100%;
-  height: 48px;
-
-  background: #ffffff;
-  border-bottom: 1px solid #eeeeee;
-
-  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
 }
 
 .navbar-container {
   width: 100%;
-  height: 100%;
+  height: 52px;
 
-  padding: 0 14px;
+  padding: 0 12px;
+
+  box-sizing: border-box;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  box-sizing: border-box;
 }
 
-.navbar-back,
-.navbar-menu {
-  width: 34px;
-  height: 34px;
+.navbar-back {
+  width: 36px;
+  height: 36px;
+
+  padding: 0;
 
   border: none;
-  border-radius: 50%;
-
   background: transparent;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  font-size: 22px;
+  font-size: 29px;
+  font-weight: 300;
+
+  color: #111111;
+
   cursor: pointer;
 }
 
-.navbar-back:hover,
-.navbar-menu:hover {
-  background: #f2f2f2;
-}
-
 .navbar-logo {
-  font-size: 20px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-size: 22px;
   font-weight: 700;
-  letter-spacing: 1px;
+
+  letter-spacing: 0.8px;
+
+  color: #111111;
+
+  white-space: nowrap;
 }
 
 .navbar-actions {
+  margin-left: auto;
+
   display: flex;
   align-items: center;
 }
 
-@media (max-width: 600px) {
-  .navbar {
-    height: 44px;
-  }
+.navbar-menu {
+  width: 38px;
+  height: 38px;
 
-  .navbar-container {
-    padding: 0 10px;
-  }
+  padding: 0;
 
-  .navbar-back,
-  .navbar-menu {
-    width: 32px;
-    height: 32px;
-    font-size: 20px;
-  }
+  border: none;
+  background: transparent;
 
-  .navbar-logo {
-    font-size: 18px;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 28px;
+  line-height: 1;
+
+  color: #333333;
+
+  cursor: pointer;
+}
+
+.navbar-back:active,
+.navbar-menu:active {
+  transform: scale(0.92);
 }

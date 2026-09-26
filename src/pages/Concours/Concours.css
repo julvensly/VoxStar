@@ -1,0 +1,171 @@
+.concours {
+  width: 100%;
+  min-height: 100vh;
+  padding: 30px 15px;
+  box-sizing: border-box;
+}
+
+.concours-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.concours-header p {
+  margin: 0 0 5px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.concours-header h1 {
+  margin: 0 0 8px;
+  font-size: 30px;
+}
+
+.concours-header span {
+  font-size: 14px;
+}
+
+.concours-list {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.concours-card {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 20px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.concours-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.concours-label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.concours-card h2 {
+  margin: 0;
+  font-size: 21px;
+}
+
+.concours-status {
+  flex-shrink: 0;
+  padding: 7px 11px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.concours-status-active {
+  background: #e7f7ed;
+  color: #16803c;
+}
+
+.concours-status-draft {
+  background: #fff4d6;
+  color: #9a6a00;
+}
+
+.concours-status-finished {
+  background: #eeeeee;
+  color: #555555;
+}
+
+.concours-dates {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.concours-date {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  border-radius: 12px;
+  background: #f7f7f7;
+}
+
+.concours-date span {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.concours-date strong {
+  font-size: 14px;
+}
+
+.concours-loading,
+.concours-empty {
+  width: 100%;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px 20px;
+  box-sizing: border-box;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.concours-empty-icon {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.concours-empty h2 {
+  margin: 0 0 8px;
+  font-size: 21px;
+}
+
+.concours-empty p {
+  margin: 0 0 18px;
+  font-size: 14px;
+}
+
+.concours-empty button {
+  border: none;
+  border-radius: 10px;
+  padding: 11px 18px;
+  background: #0066cc;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.concours-empty button:hover {
+  opacity: 0.9;
+}
+
+@media (min-width: 768px) {
+  .concours {
+    padding: 40px 30px;
+  }
+
+  .concours-card {
+    padding: 24px;
+  }
+
+  .concours-dates {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

@@ -1,0 +1,51 @@
+.password-page {
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+.password-content {
+  padding: 25px 18px;
+}
+
+.password-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.password-field label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.password-field input {
+  width: 100%;
+  height: 48px;
+
+  padding: 0 14px;
+  box-sizing: border-box;
+
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+
+  font-size: 16px;
+  outline: none;
+}
+
+.save-password-button {
+  width: 100%;
+  height: 48px;
+
+  margin-top: 8px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #2563eb;
+  color: #ffffff;
+
+  font-size: 15px;
+  font-weight: 600;
+}

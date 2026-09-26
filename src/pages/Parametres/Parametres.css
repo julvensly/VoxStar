@@ -1,0 +1,160 @@
+.settings-overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.35);
+
+  z-index: 2000;
+
+  animation: settingsFadeIn 0.2s ease;
+}
+
+.settings-panel {
+  position: fixed;
+
+  top: 0;
+  right: 0;
+
+  width: min(360px, 88vw);
+  height: 100vh;
+
+  background: #ffffff;
+
+  z-index: 2001;
+
+  box-shadow: -5px 0 20px rgba(0, 0, 0, 0.12);
+
+  animation: settingsSlideIn 0.25s ease;
+
+  overflow-y: auto;
+}
+
+.settings-header {
+  height: 60px;
+
+  padding: 0 14px;
+
+  border-bottom: 1px solid #e5e7eb;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+}
+
+.settings-header h1 {
+  margin: 0;
+
+  font-size: 20px;
+  font-weight: 700;
+
+  color: #111827;
+}
+
+.settings-back,
+.settings-close {
+  width: 40px;
+  height: 40px;
+
+  padding: 0;
+
+  border: none;
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.settings-back {
+  font-size: 28px;
+}
+
+.settings-close {
+  font-size: 30px;
+  font-weight: 300;
+}
+
+.settings-content {
+  padding: 10px 0;
+}
+
+.settings-item {
+  width: 100%;
+  min-height: 62px;
+
+  padding: 0 18px;
+
+  border: none;
+  border-bottom: 1px solid #f0f0f0;
+
+  background: #ffffff;
+
+  display: flex;
+  align-items: center;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.settings-item:active {
+  background: #f5f5f5;
+}
+
+.settings-icon {
+  width: 38px;
+
+  font-size: 21px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.settings-text {
+  flex: 1;
+
+  font-size: 16px;
+  font-weight: 500;
+
+  color: #111827;
+}
+
+.settings-arrow {
+  font-size: 27px;
+  color: #9ca3af;
+}
+
+.settings-logout {
+  margin-top: 12px;
+
+  border-top: 1px solid #f0f0f0;
+}
+
+.settings-logout .settings-text {
+  color: #dc2626;
+}
+
+@keyframes settingsSlideIn {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes settingsFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
