@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { getMe } from '../../services/api'
 import './Profile.css'
 
-const API_URL = 'http://localhost:5000'
+const API_URL = 'https://voxstar.onrender.com'
 
 export default function Profile() {
   const navigate = useNavigate()

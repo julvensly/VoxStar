@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './Concours.css'
 
-const API_URL = 'http://localhost:5000/api'
+const API_URL = 'https://voxstar.onrender.com/api'
 
 function Concours() {
   const [concours, setConcours] = useState([])

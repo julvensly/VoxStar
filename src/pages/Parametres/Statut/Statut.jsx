@@ -5,7 +5,7 @@ import { getMe } from '../../../services/api'
 
 import './Statut.css'
 
-const API_URL = 'http://localhost:5000/api'
+const API_URL = 'https://voxstar.onrender.com/api'
 
 export default function Statut() {
   const navigate = useNavigate()

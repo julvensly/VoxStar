@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './TopCandidates.css'
 
-const API_URL = 'http://localhost:5000'
+const API_URL = 'https://voxstar.onrender.com'
 
 function TopCandidates() {
   const navigate = useNavigate()

@@ -230,7 +230,7 @@ export default function ModifierProfil() {
     }
 
     if (user.photo_url) {
-      return `http://localhost:5000${user.photo_url}`
+      return `https://voxstar.onrender.com${user.photo_url}`
     }
 
     return ''

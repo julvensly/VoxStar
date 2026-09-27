@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Candidates.css'
 
-const API_URL = 'http://localhost:5000'
+const API_URL = 'https://voxstar.onrender.com'
 
 function Candidates() {
   const navigate = useNavigate()

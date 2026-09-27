@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Ranking.css'
 
-const API_URL = 'http://localhost:5000/api'
+const API_URL = 'https://voxstar.onrender.com/api'
 
 function Ranking() {
   const navigate = useNavigate()
@@ -130,7 +130,7 @@ function Ranking() {
 
               {candidate.photo_url ? (
                 <img
-                  src={`http://localhost:5000${candidate.photo_url}`}
+                  src={`https://voxstar.onrender.com${candidate.photo_url}`}
                   alt={candidate.full_name}
                   className="ranking-photo"
                 />

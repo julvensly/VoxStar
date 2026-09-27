@@ -6,7 +6,7 @@ import VoteurMenu from './VoteurMenu'
 import CandidatMenu from './CandidatMenu'
 import AdminMenu from './AdminMenu'
 
-const API_URL = 'http://localhost:5000/api'
+const API_URL = 'https://voxstar.onrender.com/api'
 
 function Menu({ isOpen, onClose }) {
   const [menuType, setMenuType] = useState('public')
