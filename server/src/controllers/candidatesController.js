@@ -113,7 +113,7 @@ export async function getCandidates(req, res) {
         co.name
       ORDER BY total_votes DESC, c.id ASC
       `,
-      [concours.id, roundNumber, roundNumber]
+      (qualificationFilter ? [concours.id, roundNumber, roundNumber] : [concours.id, roundNumber])
     )
 
     return res.json({
