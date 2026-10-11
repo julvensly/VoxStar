@@ -4,29 +4,37 @@ import './Ranking.css'
 
 const API_URL = 'https://voxstar.onrender.com/api'
 
+const ROUNDS = [
+  { number: 1, label: 'Premye tou' },
+  { number: 2, label: 'Dezyèm tou' },
+  { number: 3, label: 'Twazyèm tou · Final' },
+]
+
 function Ranking() {
   const navigate = useNavigate()
 
   const [candidates, setCandidates] = useState([])
   const [edition, setEdition] = useState(null)
+  const [round, setRound] = useState(1)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
   useEffect(() => {
+    const controller = new AbortController()
+
     const loadRanking = async () => {
       try {
         setLoading(true)
         setError('')
 
-        const response = await fetch(`${API_URL}/ranking`)
-
-        if (!response.ok) {
-          throw new Error('Erreur lors du chargement du classement')
-        }
+        const response = await fetch(
+          `${API_URL}/ranking?round=${round}`,
+          { signal: controller.signal }
+        )
 
         const data = await response.json()
 
-        if (!data.success) {
+        if (!response.ok || !data.success) {
           throw new Error(
             data.message || 'Impossible de charger le classement'
           )
@@ -34,83 +42,89 @@ function Ranking() {
 
         setEdition(data.edition)
         setCandidates(data.candidates || [])
-      } catch (error) {
-        console.error('Ranking error:', error)
-
-        setError(
-          error.message ||
-          'Impossible de charger le classement'
-        )
+      } catch (err) {
+        if (err.name !== 'AbortError') {
+          console.error('Ranking error:', err)
+          setError(
+            err.message || 'Impossible de charger le classement'
+          )
+        }
       } finally {
-        setLoading(false)
+        if (!controller.signal.aborted) {
+          setLoading(false)
+        }
       }
     }
 
     loadRanking()
-  }, [])
+
+    return () => controller.abort()
+  }, [round])
 
   const handleCandidateClick = (candidateId) => {
     navigate(`/#candidate-${candidateId}`)
   }
 
-  if (loading) {
-    return (
-      <main className="ranking">
-        <div className="ranking-header">
-          <p>VOXSTAR</p>
-          <h1>Classement</h1>
-          <span>Édition actuelle</span>
-        </div>
-
-        <div className="ranking-loading">
-          Chargement du classement...
-        </div>
-      </main>
-    )
-  }
-
-  if (error) {
-    return (
-      <main className="ranking">
-        <div className="ranking-header">
-          <p>VOXSTAR</p>
-          <h1>Classement</h1>
-          <span>Édition actuelle</span>
-        </div>
-
-        <div className="ranking-empty">
-          <p>{error}</p>
-
-          <button
-            type="button"
-            onClick={() => window.location.reload()}
-          >
-            Réessayer
-          </button>
-        </div>
-      </main>
-    )
-  }
+  const selectedRound = ROUNDS.find(
+    (item) => item.number === round
+  )
 
   return (
     <main className="ranking">
       <div className="ranking-header">
         <p>VOXSTAR</p>
-
         <h1>Classement</h1>
-
-        <span>
-          {edition?.title || 'Édition actuelle'}
-        </span>
+        <span>{edition?.title || edition?.name || 'Concours actuel'}</span>
       </div>
 
-      {candidates.length === 0 ? (
-        <div className="ranking-empty">
-          <h2>Aucun candidat</h2>
+      <nav className="ranking-rounds" aria-label="Phases du classement">
+        {ROUNDS.map((item) => (
+          <button
+            key={item.number}
+            type="button"
+            className={`ranking-round ${
+              round === item.number ? 'active' : ''
+            }`}
+            aria-pressed={round === item.number}
+            onClick={() => setRound(item.number)}
+          >
+            {item.label}
+          </button>
+        ))}
+      </nav>
 
+      <div className="ranking-round-title">
+        <h2>{selectedRound?.label}</h2>
+        <p>
+          {round === 1 &&
+            'Classement des candidats de la première manche.'}
+          {round === 2 &&
+            'Classement des candidats qualifiés pour la deuxième manche.'}
+          {round === 3 &&
+            'Classement des finalistes du concours.'}
+        </p>
+      </div>
+
+      {loading ? (
+        <div className="ranking-loading">
+          Chargement du classement...
+        </div>
+      ) : error ? (
+        <div className="ranking-empty">
+          <p>{error}</p>
+          <button
+            type="button"
+            onClick={() => setRound((current) => current)}
+          >
+            Réessayer
+          </button>
+        </div>
+      ) : candidates.length === 0 ? (
+        <div className="ranking-empty">
+          <h2>Aucun candidat pour cette phase</h2>
           <p>
-            Il n'y a actuellement aucun candidat
-            dans l'édition active.
+            Le classement apparaîtra lorsque les candidats de cette
+            phase seront disponibles.
           </p>
         </div>
       ) : (
@@ -120,39 +134,21 @@ function Ranking() {
               key={candidate.id}
               type="button"
               className="ranking-card"
-              onClick={() =>
-                handleCandidateClick(candidate.id)
-              }
+              onClick={() => handleCandidateClick(candidate.id)}
             >
               <div className="ranking-position">
                 #{index + 1}
               </div>
 
-              {candidate.photo_url ? (
-                <img
-                  src={`https://voxstar.onrender.com${candidate.photo_url}`}
-                  alt={candidate.full_name}
-                  className="ranking-photo"
-                />
-              ) : (
-                <div className="ranking-photo-placeholder">
-                  👤
-                </div>
-              )}
-
               <div className="ranking-info">
                 <h2>{candidate.full_name}</h2>
-
                 <span>
-                  {candidate.class_name || 'Classe non définie'}
+                  {candidate.concours_name || 'Concours'}
                 </span>
               </div>
 
               <div className="ranking-votes">
-                <strong>
-                  {candidate.total_votes}
-                </strong>
-
+                <strong>{candidate.total_votes ?? 0}</strong>
                 <span>votes</span>
               </div>
             </button>

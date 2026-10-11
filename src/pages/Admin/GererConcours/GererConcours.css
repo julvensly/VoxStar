@@ -1,0 +1,296 @@
+.gerer-concours {
+  width: 100%;
+  min-height: 100vh;
+  padding: 30px 15px;
+  box-sizing: border-box;
+}
+
+.gerer-concours-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.gerer-concours-header p {
+  margin: 0 0 5px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.gerer-concours-header h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+}
+
+.gerer-concours-header span {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.gerer-concours-actions {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.gerer-concours-actions button,
+.gerer-concours-message button {
+  width: 100%;
+  height: 44px;
+  border: none;
+  border-radius: 12px;
+  background: #0066cc;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.gerer-concours-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.gerer-concours-card {
+  width: 100%;
+  overflow: hidden;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+}
+
+.gerer-concours-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #111111;
+}
+
+.gerer-concours-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.gerer-concours-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.gerer-concours-status {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  padding: 8px 12px;
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: 800;
+  background: #ffffff;
+}
+
+.gerer-concours-status-active {
+  color: #16803c;
+}
+
+.gerer-concours-status-draft {
+  color: #9a6a00;
+}
+
+.gerer-concours-status-finished {
+  color: #555555;
+}
+
+.gerer-concours-status-cancelled {
+  color: #a00000;
+}
+
+.gerer-concours-content {
+  padding: 18px;
+}
+
+.gerer-concours-content h2 {
+  margin: 0 0 15px;
+  font-size: 21px;
+}
+
+.gerer-concours-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.gerer-concours-info div {
+  padding: 12px;
+  border-radius: 12px;
+  background: #f6f6f6;
+}
+
+.gerer-concours-info span,
+.gerer-concours-date span {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  opacity: 0.6;
+}
+
+.gerer-concours-info strong,
+.gerer-concours-date strong {
+  font-size: 13px;
+}
+
+.gerer-concours-date {
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 12px;
+  background: #f6f6f6;
+}
+
+.gerer-concours-button {
+  width: 100%;
+  height: 44px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 11px;
+  background: #111111;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.gerer-concours-message {
+  width: 100%;
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 30px 20px;
+  box-sizing: border-box;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.gerer-concours-message h2 {
+  margin: 0 0 8px;
+}
+
+.gerer-concours-message p {
+  margin: 0 0 18px;
+  font-size: 14px;
+}
+
+.gerer-concours-icon {
+  margin-bottom: 10px;
+  font-size: 42px;
+}
+
+@media (min-width: 768px) {
+  .gerer-concours {
+    padding: 45px 30px;
+  }
+
+  .gerer-concours-list {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+
+  .gerer-concours-actions {
+    max-width: 900px;
+    margin: 0 auto 25px;
+  }
+
+  .gerer-concours-image {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+.gerer-concours-feedback {
+  max-width: 900px;
+  margin: 0 auto 20px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.gerer-concours-feedback-success {
+  background: #e8f7ed;
+  color: #176b35;
+}
+
+.gerer-concours-feedback-error {
+  background: #fff0f0;
+  color: #a00000;
+}
+
+.gerer-concours-delete {
+  width: 100%;
+  min-height: 44px;
+  margin-top: 10px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 11px;
+  background: #b42318;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.gerer-concours-delete:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Bouton suppression concours - visibilité forcée */
+.gerer-concours-content .gerer-concours-delete {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  min-height: 48px;
+  margin-top: 12px;
+  background: #c62828 !important;
+  color: #ffffff !important;
+  border: 2px solid #8e0000 !important;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+/* Bouton activation concours */
+.gerer-concours-activate {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  margin-top: 12px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 11px;
+  background: #16803c;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.gerer-concours-activate:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

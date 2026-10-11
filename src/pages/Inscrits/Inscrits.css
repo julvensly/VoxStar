@@ -1,0 +1,315 @@
+.inscrits {
+  width: 100%;
+  min-height: 100vh;
+  padding: 28px 14px 50px;
+  box-sizing: border-box;
+  background: #f5f7fb;
+}
+
+.inscrits-container {
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.inscrits-header {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.inscrits-header h1 {
+  margin: 0 0 7px;
+  color: #111827;
+  font-size: 29px;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+.inscrits-header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* =========================
+   MESSAGES
+========================= */
+
+.inscrits-message {
+  width: 100%;
+  margin: 35px auto;
+  padding: 25px 18px;
+  box-sizing: border-box;
+  border-radius: 17px;
+  background: #ffffff;
+  color: #475569;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.6;
+  box-shadow: 0 5px 20px rgba(15, 23, 42, 0.06);
+}
+
+.inscrits-error {
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+  background: #fff7f7;
+}
+
+/* =========================
+   CONCOURS CARD
+========================= */
+
+.inscrits-concours {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 20px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 7px 25px rgba(15, 23, 42, 0.09);
+}
+
+/* =========================
+   IMAGE
+========================= */
+
+.inscrits-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #111111;
+}
+
+.inscrits-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.inscrits-image-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: #ffffff;
+  background: #151515;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+/* =========================
+   CONCOURS INFO
+========================= */
+
+.inscrits-info {
+  padding: 20px;
+}
+
+.inscrits-info h2 {
+  margin: 0 0 18px;
+  color: #111827;
+  font-size: 23px;
+  line-height: 1.25;
+  font-weight: 800;
+}
+
+.inscrits-price,
+.inscrits-places {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 13px 14px;
+  border-radius: 13px;
+  background: #f7f8fa;
+}
+
+.inscrits-price {
+  margin-bottom: 10px;
+}
+
+.inscrits-price span,
+.inscrits-places span {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.inscrits-price strong,
+.inscrits-places strong {
+  color: #111827;
+  font-size: 14px;
+  font-weight: 800;
+  text-align: right;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.inscrits-form {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 7px 25px rgba(15, 23, 42, 0.09);
+}
+
+.inscrits-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.inscrits-form-group label {
+  color: #1e293b;
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.inscrits-form-group input[type="file"] {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #dbe2ec;
+  border-radius: 11px;
+  background: #f8fafc;
+  color: #475569;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.inscrits-form-group input[type="file"]:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.inscrits-form-group small {
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* =========================
+   SUBMIT BUTTON
+========================= */
+
+.inscrits-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 50px;
+  margin-top: 20px;
+  padding: 13px 18px;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 12px;
+  background: #111111;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.inscrits-submit:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.14);
+}
+
+.inscrits-submit:active {
+  transform: translateY(0);
+}
+
+.inscrits-submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* =========================
+   TABLET / DESKTOP
+========================= */
+
+@media (min-width: 700px) {
+  .inscrits {
+    padding: 45px 25px 70px;
+  }
+
+  .inscrits-container {
+    max-width: 650px;
+  }
+
+  .inscrits-header h1 {
+    font-size: 32px;
+  }
+
+  .inscrits-concours {
+    border-radius: 22px;
+  }
+
+  .inscrits-image {
+    aspect-ratio: 16 / 9;
+  }
+
+  .inscrits-info {
+    padding: 24px;
+  }
+
+  .inscrits-form {
+    padding: 24px;
+  }
+}
+
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media (max-width: 380px) {
+  .inscrits {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .inscrits-header h1 {
+    font-size: 26px;
+  }
+
+  .inscrits-info {
+    padding: 16px;
+  }
+
+  .inscrits-form {
+    padding: 16px;
+  }
+
+  .inscrits-price,
+  .inscrits-places {
+    padding: 12px;
+  }
+
+  .inscrits-price strong,
+  .inscrits-places strong {
+    font-size: 13px;
+  }
+}

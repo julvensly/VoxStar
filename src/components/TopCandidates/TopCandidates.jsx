@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { voteCandidate } from '../../services/api.js'
 import './TopCandidates.css'
 
 const API_URL = 'https://voxstar.onrender.com'
 
 function TopCandidates() {
-  const navigate = useNavigate()
 
   const [candidates, setCandidates] = useState([])
   const [loading, setLoading] = useState(true)
@@ -55,8 +54,23 @@ function TopCandidates() {
     loadTopCandidates()
   }, [])
 
-  const handleVote = (candidateId) => {
-    navigate(`/vote/${candidateId}`)
+  const handleVote = async (candidateId) => {
+    try {
+      const result = await voteCandidate(candidateId)
+
+      setCandidates((currentCandidates) =>
+        currentCandidates.map((candidate) =>
+          candidate.id === candidateId
+            ? { ...candidate, total_votes: result.vote.total_votes }
+            : candidate
+        )
+      )
+
+      window.alert(result.message || "Vote enregistré avec succès")
+    } catch (error) {
+      console.error("Vote error:", error)
+      window.alert(error.message || "Erreur lors du vote")
+    }
   }
 
   if (loading) {
@@ -171,8 +185,8 @@ function TopCandidates() {
               </h3>
 
               <p>
-                {candidate.class_name
-                  ? `${candidate.class_name} • `
+                {candidate.concours_name
+                  ? `${candidate.concours_name} • `
                   : ''}
                 {candidate.total_votes} votes
               </p>

@@ -96,15 +96,6 @@ function AdminMenu({ onClose }) {
 
         <button
           onClick={() =>
-            openPage('/inscription')
-          }
-        >
-          📝
-          <span>Inscription</span>
-        </button>
-
-        <button
-          onClick={() =>
             openPage('/admin/concours/creer')
           }
         >
@@ -123,6 +114,13 @@ function AdminMenu({ onClose }) {
           <span>
             Gérer les concours
           </span>
+        </button>
+
+        <button
+          onClick={() => openPage("/admin/candidats")}
+        >
+          👥
+          <span>Gérer les candidats</span>
         </button>
 
       </nav>

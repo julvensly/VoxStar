@@ -94,15 +94,6 @@ function CandidatMenu({ onClose }) {
           <span>Concours</span>
         </button>
 
-        <button
-          onClick={() =>
-            openPage('/inscription')
-          }
-        >
-          📝
-          <span>Inscription</span>
-        </button>
-
       </nav>
     </aside>
   )

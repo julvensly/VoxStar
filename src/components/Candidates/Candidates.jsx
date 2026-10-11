@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { voteCandidate } from '../../services/api.js'
 import './Candidates.css'
 
 const API_URL = 'https://voxstar.onrender.com'
 
 function Candidates() {
-  const navigate = useNavigate()
 
   const [candidates, setCandidates] = useState([])
   const [search, setSearch] = useState('')
@@ -74,8 +73,23 @@ function Candidates() {
     }
   )
 
-  const handleVote = (candidateId) => {
-    navigate(`/vote/${candidateId}`)
+  const handleVote = async (candidateId) => {
+    try {
+      const result = await voteCandidate(candidateId)
+
+      setCandidates((currentCandidates) =>
+        currentCandidates.map((candidate) =>
+          candidate.id === candidateId
+            ? { ...candidate, total_votes: result.vote.total_votes }
+            : candidate
+        )
+      )
+
+      window.alert(result.message || "Vote enregistré avec succès")
+    } catch (error) {
+      console.error("Vote error:", error)
+      window.alert(error.message || "Erreur lors du vote")
+    }
   }
 
   if (loading) {
@@ -163,6 +177,7 @@ function Candidates() {
             (candidate, index) => (
               <div
                 className="candidate-card"
+                id={`candidate-${candidate.id}`}
                 key={candidate.id}
               >
                 <div className="candidate-photo">

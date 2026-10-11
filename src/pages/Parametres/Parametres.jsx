@@ -12,7 +12,7 @@ export default function Parametres() {
     localStorage.removeItem('voxstar_token')
     localStorage.removeItem('voxstar_user')
 
-    navigate('/connexion', { replace: true })
+    navigate('/', { replace: true })
   }
 
   return (

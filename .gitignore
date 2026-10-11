@@ -27,3 +27,11 @@ dist-ssr
 server/.env
 
 uploads/
+
+# Local database backups
+voxstar_backup.sql
+*.sql
+
+# Local backup files
+*.bak
+*.backup

@@ -5,15 +5,24 @@ export async function getConcours(req, res) {
     const result = await pool.query(
       `SELECT
          id,
-         title,
-         registration_start,
-         registration_end,
-         voting_start,
-         voting_end,
-         results_date,
+         name,
+         photo_url,
          status,
-         created_at
-       FROM editions
+         prix,
+         places,
+         inscription_debut,
+         inscription_fin,
+         premier_debut,
+         premier_fin,
+         premier_nombre,
+         deuxieme_debut,
+         deuxieme_fin,
+         deuxieme_nombre,
+         troisieme_debut,
+         troisieme_fin,
+         created_at,
+         updated_at
+       FROM public.concours
        ORDER BY created_at DESC, id DESC`
     )
 
@@ -38,15 +47,24 @@ export async function getConcoursById(req, res) {
     const result = await pool.query(
       `SELECT
          id,
-         title,
-         registration_start,
-         registration_end,
-         voting_start,
-         voting_end,
-         results_date,
+         name,
+         photo_url,
          status,
-         created_at
-       FROM editions
+         prix,
+         places,
+         inscription_debut,
+         inscription_fin,
+         premier_debut,
+         premier_fin,
+         premier_nombre,
+         deuxieme_debut,
+         deuxieme_fin,
+         deuxieme_nombre,
+         troisieme_debut,
+         troisieme_fin,
+         created_at,
+         updated_at
+       FROM public.concours
        WHERE id = $1`,
       [id]
     )

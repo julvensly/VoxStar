@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './Concours.css'
 
 const API_URL = 'https://voxstar.onrender.com/api'
 
 function Concours() {
+  const navigate = useNavigate()
+
   const [concours, setConcours] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -35,10 +38,7 @@ function Concours() {
 
         setConcours(data.concours || [])
       } catch (error) {
-        console.error(
-          'Concours error:',
-          error
-        )
+        console.error('Concours error:', error)
 
         setError(
           error.message ||
@@ -78,6 +78,9 @@ function Concours() {
       case 'finished':
         return 'Terminé'
 
+      case 'cancelled':
+        return 'Annulé'
+
       default:
         return status || 'Non défini'
     }
@@ -88,7 +91,9 @@ function Concours() {
       <main className="concours">
         <div className="concours-header">
           <p>VOXSTAR</p>
+
           <h1>Concours</h1>
+
           <span>
             Découvrez les concours disponibles
           </span>
@@ -106,6 +111,7 @@ function Concours() {
       <main className="concours">
         <div className="concours-header">
           <p>VOXSTAR</p>
+
           <h1>Concours</h1>
         </div>
 
@@ -154,69 +160,144 @@ function Concours() {
         </div>
       ) : (
         <div className="concours-list">
-          {concours.map((item) => (
-            <article
-              className="concours-card"
-              key={item.id}
-            >
-              <div className="concours-card-top">
-                <div>
-                  <span className="concours-label">
-                    CONCOURS
+          {concours.map((item) => {
+            const imageUrl = item.photo_url
+              ? `${API_URL.replace('/api', '')}${item.photo_url}`
+              : null
+
+            return (
+              <article
+                className="concours-card"
+                key={item.id}
+              >
+                <div className="concours-flyer">
+                  {imageUrl ? (
+                    <img
+                      src={imageUrl}
+                      alt={`Affiche ${item.name}`}
+                      className="concours-flyer-image"
+                    />
+                  ) : (
+                    <div className="concours-flyer-placeholder">
+                      <span>VOXSTAR</span>
+
+                      <strong>
+                        CONCOURS
+                      </strong>
+                    </div>
+                  )}
+
+                  <div className="concours-flyer-overlay">
+                    <span className="concours-label">
+                      VOXSTAR • CONCOURS
+                    </span>
+
+                    <h2>{item.name}</h2>
+                  </div>
+
+                  <span
+                    className={`concours-status concours-status-${item.status}`}
+                  >
+                    {getStatusLabel(item.status)}
                   </span>
-
-                  <h2>{item.title}</h2>
                 </div>
 
-                <span
-                  className={`concours-status concours-status-${item.status}`}
-                >
-                  {getStatusLabel(item.status)}
-                </span>
-              </div>
+                <div className="concours-card-content">
+                  <div className="concours-info">
+                    <div className="concours-info-item">
+                      <span>Prix</span>
 
-              <div className="concours-dates">
-                <div className="concours-date">
-                  <span>Inscription</span>
+                      <strong>
+                        {Number(
+                          item.prix || 0
+                        ).toLocaleString('fr-FR')}{' '}
+                        HTG
+                      </strong>
+                    </div>
 
-                  <strong>
-                    {formatDate(
-                      item.registration_start
-                    )}
-                    {' → '}
-                    {formatDate(
-                      item.registration_end
-                    )}
-                  </strong>
+                    <div className="concours-info-item">
+                      <span>Places</span>
+
+                      <strong>
+                        {item.places}
+                      </strong>
+                    </div>
+                  </div>
+
+                  <div className="concours-dates">
+                    <div className="concours-date">
+                      <span>Inscription</span>
+
+                      <strong>
+                        {formatDate(
+                          item.inscription_debut
+                        )}
+                        {' → '}
+                        {formatDate(
+                          item.inscription_fin
+                        )}
+                      </strong>
+                    </div>
+
+                    <div className="concours-date">
+                      <span>1er tour</span>
+
+                      <strong>
+                        {formatDate(
+                          item.premier_debut
+                        )}
+                        {' → '}
+                        {formatDate(
+                          item.premier_fin
+                        )}
+                      </strong>
+                    </div>
+
+                    <div className="concours-date">
+                      <span>2e tour</span>
+
+                      <strong>
+                        {formatDate(
+                          item.deuxieme_debut
+                        )}
+                        {' → '}
+                        {formatDate(
+                          item.deuxieme_fin
+                        )}
+                      </strong>
+                    </div>
+
+                    <div className="concours-date">
+                      <span>3e tour</span>
+
+                      <strong>
+                        {formatDate(
+                          item.troisieme_debut
+                        )}
+                        {' → '}
+                        {formatDate(
+                          item.troisieme_fin
+                        )}
+                      </strong>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    className="concours-inscrire-button"
+                    onClick={() =>
+                      navigate(
+                        `/inscrits/${item.id}`
+                      )
+                    }
+                  >
+                    INSKRI
+                  </button>
                 </div>
-
-                <div className="concours-date">
-                  <span>Vote</span>
-
-                  <strong>
-                    {formatDate(
-                      item.voting_start
-                    )}
-                    {' → '}
-                    {formatDate(
-                      item.voting_end
-                    )}
-                  </strong>
-                </div>
-
-                <div className="concours-date">
-                  <span>Résultats</span>
-
-                  <strong>
-                    {formatDate(
-                      item.results_date
-                    )}
-                  </strong>
-                </div>
-              </div>
-            </article>
-          ))}
-       </div>
+              </article>
+            )
+          })}
+        </div>
       )}
     </main>
   )

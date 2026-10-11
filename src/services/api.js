@@ -117,3 +117,28 @@ export async function updateProfilePhoto(file) {
 
   return result
 }
+
+export async function voteCandidate(candidatId) {
+  const token = localStorage.getItem("voxstar_token")
+
+  if (!token) {
+    throw new Error("Vous devez vous connecter pour voter")
+  }
+
+  const response = await fetch(`${API_URL}/votes`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify({ candidat_id: candidatId })
+  })
+
+  const result = await response.json()
+
+  if (!response.ok) {
+    throw new Error(result.message || "Erreur lors du vote")
+  }
+
+  return result
+}

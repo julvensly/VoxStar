@@ -6,14 +6,17 @@ import { fileURLToPath } from 'url'
 
 import pool from './config/database.js'
 
-import authRoutes from './routes/authRoutes.js'
-import profileRoutes from './routes/profileRoutes.js'
-import rankingRoutes from './routes/rankingRoutes.js'
-import candidatesRoutes from './routes/candidatesRoutes.js'
+import createConcoursRoutes from './routes/createConcoursRoutes.js'
 import concoursRoutes from './routes/concoursRoutes.js'
+import gererConcoursRoutes from './routes/gererConcoursRoutes.js'
+import authRoutes from './routes/authRoutes.js'
 import menuRoutes from './routes/menuRoutes.js'
+import candidatesRoutes from './routes/candidatesRoutes.js'
+import inscritsRoutes from './routes/inscritsRoutes.js'
+import voteRoutes from './routes/voteRoutes.js'
+import rankingRoutes from './routes/rankingRoutes.js'
+import profileRoutes from './routes/profileRoutes.js'
 import statusRoutes from './routes/statusRoutes.js'
-
 dotenv.config()
 
 const app = express()
@@ -25,78 +28,23 @@ const __dirname = path.dirname(__filename)
 
 const uploadsPath = path.join(__dirname, '../uploads')
 
-/*
-|--------------------------------------------------------------------------
-| Middlewares
-|--------------------------------------------------------------------------
-*/
-
 app.use(cors())
-
 app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
-app.use(express.urlencoded({
-  extended: true
-}))
+app.use('/uploads', express.static(uploadsPath))
 
-/*
-|--------------------------------------------------------------------------
-| Static files
-|--------------------------------------------------------------------------
-*/
-
-app.use(
-  '/uploads',
-  express.static(uploadsPath)
-)
-
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-*/
-
-app.use(
-  '/api/auth',
-  authRoutes
-)
-
-app.use(
-  '/api/profile',
-  profileRoutes
-)
-
-app.use(
-  '/api/ranking',
-  rankingRoutes
-)
-
-app.use(
-  '/api/candidates',
-  candidatesRoutes
-)
-
-app.use(
-  '/api/concours',
-  concoursRoutes
-)
-
-app.use(
-  '/api/menu',
-  menuRoutes
-)
-
-app.use(
-  '/api/status',
-  statusRoutes
-)
-
-/*
-|--------------------------------------------------------------------------
-| API principal
-|--------------------------------------------------------------------------
-*/
-
+app.use('/api/concours', createConcoursRoutes)
+app.use('/api/concours', concoursRoutes)
+app.use('/api/concours', gererConcoursRoutes)
+app.use('/api/auth', authRoutes)
+app.use('/api/menu', menuRoutes)
+app.use('/api/candidates', candidatesRoutes)
+app.use('/api/inscrits', inscritsRoutes)
+app.use('/api/votes', voteRoutes)
+app.use('/api/ranking', rankingRoutes)
+app.use('/api/profile', profileRoutes)
+app.use('/api/status', statusRoutes)
 app.get('/api', (req, res) => {
   res.json({
     success: true,
@@ -104,17 +52,9 @@ app.get('/api', (req, res) => {
   })
 })
 
-/*
-|--------------------------------------------------------------------------
-| Health check
-|--------------------------------------------------------------------------
-*/
-
 app.get('/api/health', async (req, res) => {
   try {
-    const result = await pool.query(
-      'SELECT NOW()'
-    )
+    const result = await pool.query('SELECT NOW()')
 
     res.json({
       success: true,
@@ -123,10 +63,7 @@ app.get('/api/health', async (req, res) => {
       time: result.rows[0].now
     })
   } catch (error) {
-    console.error(
-      'PostgreSQL error:',
-      error
-    )
+    console.error('PostgreSQL error:', error)
 
     res.status(500).json({
       success: false,
@@ -137,12 +74,6 @@ app.get('/api/health', async (req, res) => {
   }
 })
 
-/*
-|--------------------------------------------------------------------------
-| 404 API
-|--------------------------------------------------------------------------
-*/
-
 app.use('/api', (req, res) => {
   res.status(404).json({
     success: false,
@@ -150,29 +81,14 @@ app.use('/api', (req, res) => {
   })
 })
 
-/*
-|--------------------------------------------------------------------------
-| Error handler
-|--------------------------------------------------------------------------
-*/
-
 app.use((error, req, res, next) => {
-  console.error(
-    'Server error:',
-    error
-  )
+  console.error('Server error:', error)
 
   res.status(500).json({
     success: false,
-    message: 'Erreur interne du serveur'
+    message: error.message || 'Erreur interne du serveur'
   })
 })
-
-/*
-|--------------------------------------------------------------------------
-| Start server
-|--------------------------------------------------------------------------
-*/
 
 app.listen(PORT, () => {
   console.log('')
@@ -181,12 +97,7 @@ app.listen(PORT, () => {
   console.log('=================================')
   console.log(`📡 API: http://localhost:${PORT}/api`)
   console.log(`❤️ Health: http://localhost:${PORT}/api/health`)
-  console.log(`👤 Auth: http://localhost:${PORT}/api/auth`)
-  console.log(`📊 Ranking: http://localhost:${PORT}/api/ranking`)
-  console.log(`👥 Candidates: http://localhost:${PORT}/api/candidates`)
-  console.log(`🏆 Concours: http://localhost:${PORT}/api/concours`)
-  console.log(`📋 Menu: http://localhost:${PORT}/api/menu`)
-  console.log(`🔐 Status: http://localhost:${PORT}/api/status`)
+  console.log(`🏆 Créer concours: POST http://localhost:${PORT}/api/concours`)
   console.log('=================================')
   console.log('')
 })
