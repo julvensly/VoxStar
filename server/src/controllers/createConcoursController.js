@@ -1,5 +1,43 @@
 import pool from '../config/database.js'
 
+async function uploadToUploadcare(file) {
+  const publicKey = process.env.UPLOADCARE_PUBLIC_KEY
+
+  if (!publicKey) {
+    throw new Error('UPLOADCARE_PUBLIC_KEY pa konfigire.')
+  }
+
+  const form = new FormData()
+
+  form.append('UPLOADCARE_PUB_KEY', publicKey)
+  form.append('UPLOADCARE_STORE', '1')
+
+  const blob = new Blob(
+    [file.buffer],
+    { type: file.mimetype }
+  )
+
+  form.append('file', blob, file.originalname)
+
+  const response = await fetch(
+    'https://upload.uploadcare.com/base/',
+    {
+      method: 'POST',
+      body: form
+    }
+  )
+
+  const data = await response.json()
+
+  if (!response.ok || !data.file) {
+    console.error('Uploadcare upload error:', data)
+
+    throw new Error('Upload foto sou Uploadcare echwe.')
+  }
+
+  return `https://47z9ktu6of.ucarecd.net/${data.file}/`
+}
+
 export async function createConcours(req, res) {
   try {
     const {
@@ -55,7 +93,7 @@ export async function createConcours(req, res) {
       })
     }
 
-    const photoUrl = `/uploads/concours/${req.file.filename}`
+    const photoUrl = await uploadToUploadcare(req.file)
 
     const result = await pool.query(
       `
