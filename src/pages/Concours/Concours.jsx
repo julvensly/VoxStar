@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import './Concours.css'
 
 const API_URL = 'https://voxstar.onrender.com/api'
+const SERVER_URL = 'https://voxstar.onrender.com'
 
 function Concours() {
   const navigate = useNavigate()
@@ -162,7 +163,11 @@ function Concours() {
         <div className="concours-list">
           {concours.map((item) => {
             const imageUrl = item.photo_url
-              ? `${API_URL.replace('/api', '')}${item.photo_url}`
+              ? 
+              item.photo_url.startsWith('http') 
+              ?
+              item.photo_url:
+              `${SERVER_URL}${item.photo_url}`
               : null
 
             return (
