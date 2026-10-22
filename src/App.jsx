@@ -14,7 +14,6 @@ import Ranking from './pages/Ranking/Ranking'
 import Reglement from './pages/Reglement/Reglement'
 import Contact from './pages/Contact/Contact'
 import Candidat from './pages/Candidat/Candidat'
-import Concours from './pages/Concours/Concours'
 
 import MonCompte from './pages/MonCompte/MonCompte'
 import Inscription from './pages/Inscription/Inscription'
@@ -37,7 +36,7 @@ function App() {
           <Route path="/inscrits/:concoursId" element={<Inscrits />} />
           <Route path="/" element={<Home />} />
           <Route path="/classement" element={<Ranking />} />
-          <Route path="/concours" element={<Concours />} />
+          
           <Route path="/reglement" element={<Reglement />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/devenir-candidat" element={<Candidat />} />
