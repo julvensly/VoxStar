@@ -3,6 +3,7 @@ import { voteCandidate } from '../../services/api.js'
 import './TopCandidates.css'
 
 const API_URL = 'https://voxstar.onrender.com'
+const SERVEUR_URL = 'https://voxstar.onrender.com'
 
 function TopCandidates() {
 
@@ -166,7 +167,7 @@ function TopCandidates() {
 
               {candidate.photo_url && (
                 <img
-                  src={`${API_URL}${candidate.photo_url}`}
+                  src={`${SERVEUR_URL}${candidate.photo_url}`}
                   alt={candidate.full_name}
                   style={{
                     position: 'absolute',
